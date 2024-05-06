@@ -3,14 +3,7 @@ import pandas as p
 
 df = pd.read_excel('22-Res11.xlsx')
 
-# Function to read student result data from Excel file
-def load_student_results(file_path):
-    try:
-        df = pd.read_excel(file_path, engine='openpyxl')  # Read Excel file into DataFrame
-        return df
-    except Exception as e:
-        st.error(f"Error occurred: {e}")
-        return None
+ 
         
 
 # Function to retrieve student result by roll number
