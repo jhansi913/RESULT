@@ -23,7 +23,7 @@ st.title('Student Result Lookup')
 st.write('Upload your student result Excel file (.xlsx format):')
 
 # File uploader to upload Excel file
-uploaded_file = st.file_uploader('Upload Excel File', type=['xlsx'])
+uploaded_file = st.file_uploader('21RES', type=['xlsx'])
 
 # Main app logic
 if uploaded_file is not None:
