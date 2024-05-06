@@ -1,5 +1,7 @@
 import streamlit as st
-import pandas as pd
+import pandas as p
+
+df = pd.read_excel('22-Res11.xlsx')
 
 # Function to read student result data from Excel file
 def load_student_results(file_path):
@@ -9,6 +11,7 @@ def load_student_results(file_path):
     except Exception as e:
         st.error(f"Error occurred: {e}")
         return None
+        
 
 # Function to retrieve student result by roll number
 def get_student_result(df, roll_number):
@@ -23,26 +26,22 @@ st.title('Student Result Lookup')
 st.write('Upload your student result Excel file (.xlsx format):')
 
 # File uploader to upload Excel file
-uploaded_file = st.file_uploader('21RES', type=['xlsx'])
-
+ 
 # Main app logic
-if uploaded_file is not None:
-    # Load student results from uploaded Excel file
-    df = load_student_results(uploaded_file)
-    
-    if df is not None:
-        # User input field for roll number
-        roll_number = st.text_input('Enter Roll Number')
-
-        # Button to trigger result display
-        if st.button('Show Result'):
-            # Retrieve student result based on entered roll number
-            student_result = get_student_result(df, roll_number)
+if df is not None:
+     roll_number = st.text_input('Enter Roll Number')     
+    if st.button('Show Result'):
+         student_result = get_student_result(df, roll_number)
+        if student_result:
+            st.write(f"Name: {student_result['Name']}")
+            st.write(f"Math Score: {student_result['Math']}")
+            st.write(f"Science Score: {student_result['Science']}")
+            st.write(f"History Score: {student_result['History']}")
+         else:
+             st.write('Student not found. Please enter a valid roll number.')
+               
             
-            if student_result:
-                st.write(f"Name: {student_result['Name']}")
-                st.write(f"Math Score: {student_result['Math']}")
-                st.write(f"Science Score: {student_result['Science']}")
-                st.write(f"History Score: {student_result['History']}")
-            else:
-                st.write('Student not found. Please enter a valid roll number.')
+                
+  
+    
+     
