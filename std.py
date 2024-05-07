@@ -10,14 +10,12 @@ st.dataframe(top_3)
 
 # Function to retrieve student result by roll number
 def get_student_result(df, roll_number):
-    student_data = df[df['REGD. NO'] == roll_number]
+    student_data = df[df['roll_number'] == roll_number]
     st.write(student_data)
     st.write(len(student_data))
  # Filter DataFrame by roll number
-    if len(student_data) > 0:
-        return student_data.iloc[0].to_dict()  # Convert row to dictionary
-    else:
-        return None
+   return student_data.iloc[0].to_dict()  # Convert row to dictionary
+   
 
 # Streamlit app title and description
 st.title('Student Result Lookup')
