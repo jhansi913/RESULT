@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 
 df = pd.read_excel('21RES.xlsx')
-st.head(df)
+top_3=df.head(5)
+st.dataframe(top_3)
 
  
         
