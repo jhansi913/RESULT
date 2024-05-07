@@ -10,6 +10,7 @@ df = pd.read_excel('21RES.xlsx')
 def get_student_result(df, roll_number):
     student_data = df[df['REGD. NO'] == roll_number]
     st.write(student_data)
+    st.write(len(student_data))
  # Filter DataFrame by roll number
     if len(student_data) > 0:
         return student_data.iloc[0].to_dict()  # Convert row to dictionary
