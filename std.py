@@ -16,7 +16,7 @@ def get_student_result(df, roll_number):
 
 # Streamlit app title and description
 st.title('Student Result Lookup')
-st.write('Upload your student result Excel file (.xlsx format):')
+
 
 # File uploader to upload Excel file
  
