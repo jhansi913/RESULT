@@ -24,17 +24,21 @@ def main():
   roll_number = st.text_input('Enter Roll Number')
   if st.button('Show Result'):
    student_result = get_student_result(df, roll_number)
+   if student_result:
+    data = pd.DataFrame(student_results)
+    st.table(data)
+   else:
+    st.write('Student not found. Please enter a valid roll number.')
+
   
   
    
-  if student_result:
-   data = pd.DataFrame(student_results)
-   st.table(data)
+   
+    
     
   
-  else:
-   st.write('Student not found. Please enter a valid roll number.')
-
+   
+   
  
  
 
