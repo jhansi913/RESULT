@@ -19,12 +19,14 @@ st.title('Student Result Lookup')
 
 
 # File uploader to upload Excel file
- 
-# Main app logic
-if df is not None:
- roll_number = st.text_input('Enter Roll Number')
- if st.button('Show Result'):
-  student_result = get_student_result(df, roll_number)
+def main():
+ if df is not None:
+  roll_number = st.text_input('Enter Roll Number')
+  if st.button('Show Result'):
+   student_result = get_student_result(df, roll_number)
+  
+  
+   
   if student_result:
    data = pd.DataFrame(student_results)
    st.table(data)
@@ -32,6 +34,12 @@ if df is not None:
   
   else:
    st.write('Student not found. Please enter a valid roll number.')
+
+ 
+ 
+
+if __name__ == "__main__":
+    main()
       
        
  
