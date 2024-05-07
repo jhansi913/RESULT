@@ -8,7 +8,7 @@ df = pd.read_excel('21RES.xlsx')
 
 # Function to retrieve student result by roll number
 def get_student_result(df, roll_number):
-    student_data = df[df['REGD. NO'] == roll_number]  # Filter DataFrame by roll number
+    student_data = df[df['roll_number'] == roll_number]  # Filter DataFrame by roll number
     if len(student_data) > 0:
         return student_data.iloc[0].to_dict()  # Convert row to dictionary
     else:
