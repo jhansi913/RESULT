@@ -24,14 +24,16 @@ st.write('Upload your student result Excel file (.xlsx format):')
 if df is not None:
      roll_number = st.text_input('Enter Roll Number')     
     if st.button('Show Result'):
-         student_result = get_student_result(df, roll_number)
-        if student_result:
-            st.write(f"Name: {student_result['Name']}")
-            st.write(f"Math Score: {student_result['Math']}")
-            st.write(f"Science Score: {student_result['Science']}")
-            st.write(f"History Score: {student_result['History']}")
-         else:
-             st.write('Student not found. Please enter a valid roll number.')
+     student_result = get_student_result(df, roll_number)
+     if student_result:
+      st.write(f"Name: {student_result['Name']}")
+      st.write(f"Math Score: {student_result['Math']}")
+      st.write(f"Science Score: {student_result['Science']}")
+      st.write(f"History Score: {student_result['History']}")
+     else:
+      st.write('Student not found. Please enter a valid roll number.')
+          
+              
                
             
                 
