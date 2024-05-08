@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 
 df = pd.read_excel('21RES.xlsx')
+df.dropna(subset=['BRANCH'], inplace=True)
 top_3=df.head(5)
 st.dataframe(top_3)
 
