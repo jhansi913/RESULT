@@ -27,7 +27,6 @@ st.title('Student Result Lookup')
 
 # File uploader to upload Excel file
 def main():
- if df is not None:
   roll_number = st.text_input('Enter Roll Number')
   if st.button('Show Result'):
    student_result = get_student_result(df, roll_number)
