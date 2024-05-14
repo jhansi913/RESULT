@@ -15,7 +15,7 @@ def get_student_result(df, roll_number):
     student_data = df[df['REGD. NO'] == roll_number]
     st.write(student_data)
     st.write(len(student_data))
-    return student_data
+    
        # Convert row to dictionary
  # Filter DataFrame by roll numbertodict
     
