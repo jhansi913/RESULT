@@ -30,7 +30,7 @@ def main():
 
         if roll_number:
             # Filter data based on the entered roll number
-            student_result = df[df['Roll Number'] == roll_number]
+            student_result = df[df['REGD. NO'] == roll_number]
 
             if not student_result.empty:
                 st.subheader(f"Results for Roll Number: {roll_number}")
