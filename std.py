@@ -35,7 +35,7 @@ def main():
   roll_number = st.text_input('Enter Roll Number')
   if st.button('Show Result'):
    student_result = get_student_result(df, roll_number)
-   if student_result:
+   if student_result.empty():
     data = pd.DataFrame(student_result)
     st.table(data)
    else:
