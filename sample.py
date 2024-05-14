@@ -1,31 +1,43 @@
-import streamlit as st
+ import streamlit as st
 import pandas as pd
 
+def load_data(file_path):
+    """
+    Load student results data from Excel file and drop rows with null values.
+    """
+    # Load Excel file into a pandas DataFrame
+    df = pd.read_excel(file_path)
+    
+    # Drop rows with any null values
+    df.dropna(inplace=True)
+    
+    return df
+
 def main():
-    st.title('Student Record Search')
+    st.title("Student Results Viewer")
 
-    # Load sample data (replace with your DataFrame loading logic)
-    data = {
-        'Roll Number': [101, 102, 103, 104],
-        'Name': ['Alice', 'Bob', 'Charlie', 'David'],
-        'Age': [20, 22, 21, 23],
-        'Grade': ['A', 'B', 'B', 'A']
-    }
-    df = pd.DataFrame(data)
+    # File upload for Excel file
+    uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx"])
 
-    # Input field for user to enter roll number
-    roll_number = st.number_input('Enter Roll Number:', min_value=1, step=1)
+    if uploaded_file is not None:
+        # Load data from the uploaded Excel file
+        df = load_data(uploaded_file)
 
-    if st.button('Search'):
-        # Filter DataFrame to find row with matching roll number
-        row = df[df['Roll Number'] == roll_number]
+        st.sidebar.subheader("Enter Roll Number")
 
-        # Display row if found
-        if not row.empty:
-            st.write('Student Record:')
-            st.table(row)
-        else:
-            st.write(f'No student found with Roll Number: {roll_number}')
+        # Input field for roll number
+        roll_number = st.sidebar.text_input("Roll Number")
 
-if __name__ == '__main__':
+        if roll_number:
+            # Filter data based on the entered roll number
+            student_result = df[df['Roll Number'] == roll_number]
+
+            if not student_result.empty:
+                st.subheader(f"Results for Roll Number: {roll_number}")
+                # Display the student's result in a table format
+                st.write(student_result)
+            else:
+                st.error("Student with this Roll Number not found")
+
+if __name__ == "__main__":
     main()
