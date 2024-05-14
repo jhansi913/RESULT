@@ -1,11 +1,15 @@
 import streamlit as st
 import pandas as pd
 
-df = pd.read_excel('21RES.xlsx')
+data = pd.read_excel('21RES.xlsx')
+data.dropna(subset=['BRANCH'], inplace=True)
+dept_list=['CSE','IT','CSM','EEE','ECE']
+selected_dept = st.selectbox("Select Department", dept_list, key="selectbox1")
+df=data[data["BRANCH"]==selected_dept]
+df=df.dropna(axis=1, how='all')
+st.write(df.head())
  
-df.dropna(subset=['BRANCH'], inplace=True)
-top_3=df.head(5)
-st.dataframe(top_3)
+ 
 
  
         
